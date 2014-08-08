@@ -3,7 +3,7 @@
 DOTFILES_HOME=$(cd "$(dirname "$0")" && pwd)
 
 _install_bash_source () {
-	ln -sf $DOTFILES_HOME/$1.bash ~/.$1.bash
+	ln -sf $DOTFILES_HOME/bash/$1.bash ~/.$1.bash
 	if ! grep -q "source ~/.$1.bash" ~/.bash_profile; then
 		echo "" >> ~/.bash_profile
 		echo "# $2" >> ~/.bash_profile
