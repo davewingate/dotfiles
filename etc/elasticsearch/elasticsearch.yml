@@ -1,0 +1,9 @@
+cluster.name: "no_cluster"
+node.name: "single_non_clustered_node"
+node.master: true
+node.data: true
+index.number_of_shards: 1
+index.number_of_replicas: 0
+discovery.zen.ping.multicast.enabled: false
+node.local: true
+network.host: "127.0.0.1"
