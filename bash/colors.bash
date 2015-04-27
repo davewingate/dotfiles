@@ -1,4 +1,5 @@
 Blue='\033[0;34m'
+Green='\033[0;32m'
 Purple='\033[0;35m'
 Red='\033[0;31m'
 Gray='\033[0;37m'
@@ -10,4 +11,8 @@ _info () {
 
 _error () {
 	echo -e "$Red$1$Reset"	
-} 
+}
+
+_success () {
+	echo -e "$Green$1$Reset"
+}
