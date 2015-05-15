@@ -27,6 +27,7 @@ ec2ip() {
   return 0
 }
 
+# checks health according to dropwizard conventions
 ec2health() {
     ips=$(ec2ip "$1" "$2" "$3" -q)
     if [[ $? == 0 ]]; then
@@ -36,7 +37,9 @@ ec2health() {
         echo "$health"
         if [[ $health == *"{\"healthy\":false}"* ]]; then
           _error "\xE2\x9C\x97"
-        elif [[ $health == *"{\"healthy\":true}"* ]]; then
+        elif [[ $health != *"{\"healthy\":true}"* ]]; then
+          _error "\xE2\x9C\x97"
+        else
           _success "\xE2\x9C\x93"
         fi
       done <<< "$ips"
