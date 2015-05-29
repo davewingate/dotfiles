@@ -33,7 +33,9 @@ ec2health() {
     if [[ $? == 0 ]]; then
       while read -r ip; do
         echo -e "======= $ip ======="
+        version=$(curl -s "$ip:8080/version" | cut -d : -f 5 | tr -d '"}')
         health=$(curl -s "$ip:8081/healthcheck")
+        echo "Version: $version"
         echo "$health"
         if [[ $health == *"{\"healthy\":false}"* ]]; then
           _error "\xE2\x9C\x97"
