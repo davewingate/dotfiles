@@ -1,3 +1,7 @@
+ec2user() { 
+    ssh ec2-user@$1 
+}
+
 ec2ip() {
   usage="usage: ec2ip profile_name region filter [-q]"
 
