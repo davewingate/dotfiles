@@ -15,3 +15,8 @@ if [ -f ~/.git-completion.bash ]; then
 else
 	_error "no support for git autocomplete"
 fi
+
+alias gs="git status"
+alias gc="git commit -m"
+alias ga="git add ."
+alias assume_unchanged="git update-index --assume-unchanged"
