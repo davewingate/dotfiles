@@ -41,9 +41,9 @@ ec2health() {
         health=$(curl -s "$ip:8081/healthcheck")
         echo "Version: $version"
         echo "$health"
-        if [[ $health == *"{\"healthy\":false}"* ]]; then
+        if [[ $health == *"{\"healthy\":false"* ]]; then
           _error "\xE2\x9C\x97"
-        elif [[ $health != *"{\"healthy\":true}"* ]]; then
+        elif [[ $health != *"{\"healthy\":true"* ]]; then
           _error "\xE2\x9C\x97"
         else
           _success "\xE2\x9C\x93"
