@@ -51,3 +51,19 @@ ec2health() {
       done <<< "$ips"
     fi
 }
+
+# for environments that don't properly consume aws profile declared in $AWS_PROFILE
+# we can explicitly set keys in environment rather than relying on profile name 
+exportAwsKeys() {
+  usage="usage: exportAwsKeys profile_name"
+
+  if [[ "$1" == "" ]]; then
+   >&2  echo "$usage"
+    return 1
+  fi
+  profile="$1"
+
+  export AWS_ACCESS_KEY_ID="$(aws configure get aws_access_key_id --profile $profile)"
+  export AWS_SECRET_ACCESS_KEY="$(aws configure get aws_secret_access_key --profile $profile)"
+  return 0
+}
